@@ -1,4 +1,4 @@
-// 28 29 гдэ метод ?
+// 2931
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform wallCheckPos;
     public Vector2 wallCheckSize = new Vector2(0.5f, 0.05f);
     public LayerMask wallLayer;
-
+    
     [Header("WallMovement")] 
     public float wallSlideSpeed = 2;
     private bool isWallSliding;
@@ -47,12 +47,18 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-        rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
         GroundCheck();
         ProcessGravity();
-        Flip();
         ProcessWallSlide();
+        ProcessWallJump();
+
+        if (!isWallJumping)
+        {
+            Flip();
+            rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
+        }
     }
+        
 
     private void ProcessGravity()
     {
@@ -95,7 +101,15 @@ public class PlayerMovement : MonoBehaviour
             isWallJumping = true;
             rb.velocity = new Vector2(wallJumpDirection * wallJumpPower.x, wallJumpPower.y); //jump away from wall
             wallJumpTimer = 0;
-
+            
+            //force flip
+            if (transform.localScale.x != wallJumpDirection)
+            {
+                isFacingRight = !isFacingRight;
+                _ls.x *= -1f;
+                transform.localScale = _ls;
+            }
+            
             Invoke(nameof(CancelWallJump), wallJumpTime + 0.1f); //wall jump = 0.5 f -- jump again = 0.6f
         }
     }
@@ -140,6 +154,8 @@ public class PlayerMovement : MonoBehaviour
             isWallJumping = false;
             wallJumpDirection = -transform.localScale.x;
             wallJumpTimer = wallJumpTime;
+
+            CancelInvoke(nameof(CancelWallJump));
         }
         else if (wallJumpTimer > 0f)
         {
@@ -166,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
     
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.white;
+        Gizmos.color = Color.red;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(wallCheckPos.position, wallCheckSize);
