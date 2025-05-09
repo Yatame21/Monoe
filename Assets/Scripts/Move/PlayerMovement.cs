@@ -1,4 +1,3 @@
-// 30 10
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
     bool isFacingRight = true;
+    public ParticleSystem smokeFX;
+    
     [Header("Movement")]
     public float moveSpeed = 5f;
     float horizontalMovement;
@@ -87,12 +88,14 @@ public class PlayerMovement : MonoBehaviour
                 // hold down jump button = full height
                 rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                 jumpsRemaining--;
+                JumpFx();
             }
             else if (context.canceled)
             {
                 // light tap of jump button = half the height
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
                 jumpsRemaining--;
+                JumpFx();
             }
         }
         // wall jump
@@ -101,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
             isWallJumping = true;
             rb.velocity = new Vector2(wallJumpDirection * wallJumpPower.x, wallJumpPower.y); //jump away from wall
             wallJumpTimer = 0;
+            JumpFx();
             
             //force flip
             if (transform.localScale.x != wallJumpDirection)
@@ -112,6 +116,11 @@ public class PlayerMovement : MonoBehaviour
             
             Invoke(nameof(CancelWallJump), wallJumpTime + 0.1f); //wall jump = 0.5 f -- jump again = 0.6f
         }
+    }
+
+    private void JumpFx()
+    {
+        smokeFX.Play();
     }
 
     private void GroundCheck()
@@ -177,6 +186,10 @@ public class PlayerMovement : MonoBehaviour
             isFacingRight = !isFacingRight;
             _ls.x *= -1f;
             transform.localScale = _ls;
+            if (rb.velocity.y == 0)
+            {
+                smokeFX.Play();
+            }
         }
     }
     
