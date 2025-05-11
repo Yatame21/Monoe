@@ -400,7 +400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.27165157, y: 0.051000003}
   m_AnchorMax: {x: 0.756485, y: 0.95321405}
-  m_AnchoredPosition: {x: -14.079224, y: -1.5479126}
+  m_AnchoredPosition: {x: -14.079224, y: -1.5479736}
   m_SizeDelta: {x: 534.4166, y: 86.68016}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &736887233
@@ -792,7 +792,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: S H E L A M E
+  m_text: forgotten mushroom
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -903,7 +903,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.27165157, y: 0.051000003}
   m_AnchorMax: {x: 0.756485, y: 0.9411605}
-  m_AnchoredPosition: {x: -4.0480347, y: 6.8565063}
+  m_AnchoredPosition: {x: -4.0480347, y: 6.8564453}
   m_SizeDelta: {x: 7.5, y: 19.210022}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1175509412
