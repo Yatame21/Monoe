@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public Animator animator;
     bool isFacingRight = true;
     public ParticleSystem smokeFX;
     
@@ -58,9 +59,13 @@ public class PlayerMovement : MonoBehaviour
             Flip();
             rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
         }
+
+        animator.SetFloat("yVelocity", rb.velocity.y);
+        animator.SetFloat("magnitude", rb.velocity.magnitude);
+        animator.SetBool("isWallSliding", isWallSliding);
     }
         
-
+    
     private void ProcessGravity()
     {
         if (rb.velocity.y < 0)
@@ -88,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
                 // hold down jump button = full height
                 rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                 jumpsRemaining--;
+                animator.SetTrigger("jump");
                 JumpFx();
             }
             else if (context.canceled)
@@ -95,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
                 // light tap of jump button = half the height
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
                 jumpsRemaining--;
+                animator.SetTrigger("jump");
                 JumpFx();
             }
         }
@@ -104,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
             isWallJumping = true;
             rb.velocity = new Vector2(wallJumpDirection * wallJumpPower.x, wallJumpPower.y); //jump away from wall
             wallJumpTimer = 0;
+            animator.SetTrigger("jump");
             JumpFx();
             
             //force flip

@@ -9049,6 +9049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2101101622}
+  animator: {fileID: 2101101630}
   smokeFX: {fileID: 1528536335}
   moveSpeed: 10
   jumpPower: 10
@@ -9125,7 +9126,7 @@ Animator:
   m_GameObject: {fileID: 2101101621}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b0272eeabfb69e24aadd1342b60a07a6, type: 2}
+  m_Controller: {fileID: 9100000, guid: b7e850276caccc64a995f1b8387005ff, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
