@@ -60,8 +60,8 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
         }
 
-        animator.SetFloat("yVelocity", rb.velocity.y);
-        animator.SetFloat("magnitude", rb.velocity.magnitude);
+        animator.SetFloat("yVelocity", rb.velocity.normalized.y);
+        animator.SetFloat("magnitude", rb.velocity.normalized.magnitude);
         animator.SetBool("isWallSliding", isWallSliding);
     }
         
