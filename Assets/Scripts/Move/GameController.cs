@@ -1,26 +1,61 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    int progressAmount;
-    public Slider ProgressSlider;
-    void Start()
+    [SerializeField]
+    private Slider progressSlider;
+    
+    [SerializeField] 
+    private GameObject portal; 
+    
+    [SerializeField] 
+    private string nextLevelName;
+
+    private int progressAmount;
+
+    private void Start()
     {
         progressAmount = 0;
-        ProgressSlider.value = 0;
+        if (progressSlider != null)
+        {
+            progressSlider.value = 0;
+        }
+        
         Gem.OnGemCollect += IncreaseProgressAmount;
+
+        if (portal != null)
+        {
+            portal.SetActive(false);
+        }
     }
 
-    void IncreaseProgressAmount(int amount)
+    private void OnDestroy()
     {
-        progressAmount += amount;
-        ProgressSlider.value = progressAmount;
+        Gem.OnGemCollect -= IncreaseProgressAmount;
+    }
+
+    private void IncreaseProgressAmount(int amount)
+    {
+        progressAmount = Mathf.Clamp(progressAmount + amount, 0, 100);
+        
+        if (progressSlider != null)
+        {
+            progressSlider.value = progressAmount;
+        }
+        
         if (progressAmount >= 100)
         {
-            Debug.Log("level comp");
+            portal.SetActive(true);
+        }
+    }
+    
+    public void LoadNextLevel()
+    {
+        if (!string.IsNullOrEmpty(nextLevelName))
+        {
+            SceneManager.LoadScene(nextLevelName);
         }
     }
 }
