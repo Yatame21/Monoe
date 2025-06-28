@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class SoundEffectManager : MonoBehaviour
 {
+    [SerializeField]
+    private Slider sfxSlider;
+    
     private static SoundEffectManager Instance;
     private static AudioSource audioSource;
     private static SoundEffectLibrary soundEffectLibrary;
     
-    [SerializeField]
-    private Slider sfxSlider;
-
     private void Awake()
     {
         if (Instance == null)

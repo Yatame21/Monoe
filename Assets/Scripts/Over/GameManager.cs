@@ -31,11 +31,13 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f; 
         deathPanel.SetActive(true);
+        MusicManager.PauseBackgroundMusic();
     }
 
     private void RestartGame()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        MusicManager.PlayBackgroundMusic(false);
     }
 }
