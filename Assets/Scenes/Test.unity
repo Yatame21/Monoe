@@ -343,9 +343,9 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 9
+  m_YDamping: 9
+  m_ZDamping: 9
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
@@ -938,7 +938,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.49803925, g: 0.49803925, b: 0.49803925, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -988,7 +988,7 @@ Transform:
   m_GameObject: {fileID: 488995632}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.4688807, y: 0.74798226, z: -15.060465}
+  m_LocalPosition: {x: 2.67, y: 2.46, z: -15.060465}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14520,6 +14520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxSlider: {fileID: 1916118789}
+  soundEffectLibrary: {fileID: 0}
 --- !u!1 &1568336720
 GameObject:
   m_ObjectHideFlags: 0
@@ -15314,7 +15315,7 @@ Transform:
   m_GameObject: {fileID: 1921693352}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.289371, y: -2.1413238, z: -15.060465}
+  m_LocalPosition: {x: 2.67, y: 2.46, z: -15.060465}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16746,7 +16747,7 @@ Transform:
   m_GameObject: {fileID: 2101101621}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.289371, y: -2.1413238, z: -5.0604644}
+  m_LocalPosition: {x: 2.67, y: 2.46, z: -5.0604644}
   m_LocalScale: {x: 1.2454175, y: 1.2640482, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16917,7 +16918,7 @@ MonoBehaviour:
   rb: {fileID: 2101101622}
   animator: {fileID: 2101101630}
   smokeFX: {fileID: 1528536335}
-  moveSpeed: 10
+  moveSpeed: 5
   jumpPower: 10
   maxJumps: 2
   groundCheckPos: {fileID: 1777952717}
