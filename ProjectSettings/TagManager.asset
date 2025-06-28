@@ -6,6 +6,8 @@ TagManager:
   tags:
   - player
   - Obstacle
+  - MusicSlider
+  - SFXSlider
   layers:
   - Default
   - TransparentFX

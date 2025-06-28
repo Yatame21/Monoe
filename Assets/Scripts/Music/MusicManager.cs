@@ -7,8 +7,8 @@ public class MusicManager : MonoBehaviour
 {
     [SerializeField]
     private Slider musicSlider;
-    
-    private static MusicManager Instance;
+
+    public static MusicManager Instance;
     private AudioSource audioSource;
     public AudioClip backgroundMusic;
 
@@ -80,6 +80,16 @@ public class MusicManager : MonoBehaviour
         if (Instance != null && Instance.audioSource != null)
         {
             Instance.audioSource.Pause();
+        }
+    }
+
+    public void RegisterSlider(Slider slider)
+    {
+        if (slider != null)
+        {
+            slider.value = currentVolume;
+            slider.onValueChanged.RemoveAllListeners(); 
+            slider.onValueChanged.AddListener(SetVolume);
         }
     }
 }

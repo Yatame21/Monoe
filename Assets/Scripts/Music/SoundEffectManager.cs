@@ -1,26 +1,28 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SoundEffectManager : MonoBehaviour
 {
-    [SerializeField]
-    private Slider sfxSlider;
-    
-    private static SoundEffectManager Instance;
-    private static AudioSource audioSource;
-    private static SoundEffectLibrary soundEffectLibrary;
-    
+    [SerializeField] private Slider sfxSlider;
+    private static SoundEffectManager instance;
+    private AudioSource audioSource;
+    [SerializeField] private SoundEffectLibrary soundEffectLibrary;
+    private static float currentVolume = 0.5f;
+
+    public static SoundEffectManager Instance => instance;
+
     private void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
             audioSource = GetComponent<AudioSource>();
-            soundEffectLibrary = GetComponent<SoundEffectLibrary>();
+            transform.SetParent(null); // Открепляем от родителя
             DontDestroyOnLoad(gameObject);
+            
+            // Загрузка сохраненной громкости
+            currentVolume = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
+            audioSource.volume = currentVolume;
         }
         else
         {
@@ -28,27 +30,48 @@ public class SoundEffectManager : MonoBehaviour
         }
     }
 
-    public static void Play(string soundName)
+    private void Start()
     {
-        AudioClip audioClip = soundEffectLibrary.GetRandomClip(soundName);
-        if (audioClip != null)
+        if (sfxSlider != null)
         {
-            audioSource.PlayOneShot(audioClip);
+            sfxSlider.value = currentVolume;
+            sfxSlider.onValueChanged.AddListener(SetVolume);
         }
     }
 
-    private void Start()
+    public void SetVolume(float volume)
     {
-        sfxSlider.onValueChanged.AddListener(delegate { OnValueChanged(); });
+        currentVolume = volume;
+        audioSource.volume = currentVolume;
+        PlayerPrefs.SetFloat("SFXVolume", currentVolume);
+        
+        // Обновляем все слайдеры в сцене
+        foreach (var slider in FindObjectsOfType<Slider>())
+        {
+            if (slider.CompareTag("SFXSlider"))
+            {
+                slider.onValueChanged.RemoveAllListeners();
+                slider.value = currentVolume;
+                slider.onValueChanged.AddListener(SetVolume);
+            }
+        }
     }
 
-    public static void SetVolume(float volume)
+    public void RegisterSlider(Slider slider)
     {
-        audioSource.volume = volume;
+        slider.value = currentVolume;
+        slider.onValueChanged.AddListener(SetVolume);
     }
 
-    public void OnValueChanged()
+    public static void Play(string soundName)
     {
-        SetVolume(sfxSlider.value);
+        if (Instance != null && Instance.soundEffectLibrary != null)
+        {
+            AudioClip clip = Instance.soundEffectLibrary.GetRandomClip(soundName);
+            if (clip != null)
+            {
+                Instance.audioSource.PlayOneShot(clip, currentVolume);
+            }
+        }
     }
 }
