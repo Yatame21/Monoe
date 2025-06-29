@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
-    guid: 6ddd501ad001cd94c9e5ed55ba06c779
+    guid: beaefb1c8205a2c42a05fc23dc8654ba
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 2b859950e5015e2408e77c276a1128e1
@@ -21,7 +21,18 @@ EditorBuildSettings:
     path: Assets/Scenes/LVL_1.unity
     guid: c16d5d3ebf9ae9b47abede41ae6a192f
   - enabled: 1
-    path: Assets/Scenes/Test.unity
-    guid: 550ad81c37c4a334e87f3ceb5eb49c03
-<<<<<<< HEAD
+    path: Assets/Scenes/LVL_2.unity
+    guid: 35ba94cae8c5acc4b8e44aba35ef1b27
+  - enabled: 1
+    path: Assets/Scenes/White_Space.unity
+    guid: 55fd2acd5a462fe458341918cd7c9ce7
+  - enabled: 1
+    path: Assets/Scenes/GoodBye.unity
+    guid: 593cdd0f0255b2e44be789aadbf3fdd8
+  - enabled: 1
+    path: Assets/Scenes/Happy_End.unity
+    guid: 8473f3f90e141d343a8a9958ef1cefd0
+  - enabled: 1
+    path: Assets/Scenes/END.unity
+    guid: 6591d1e7afd2b094cbc45d874e37c05d
   m_configObjects: {}

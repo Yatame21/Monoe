@@ -40,4 +40,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         MusicManager.PlayBackgroundMusic(false);
     }
+    
+    
 }
