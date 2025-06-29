@@ -9,9 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 6ddd501ad001cd94c9e5ed55ba06c779
   - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 2b859950e5015e2408e77c276a1128e1
+  - enabled: 1
+    path: Assets/Scenes/Building.unity
+    guid: c0c0f35cd0c0b8b448e432fda66a062b
+  - enabled: 1
+    path: Assets/Scenes/Tunnel.unity
+    guid: 5ea6e7fc91433cc4ebcbf786dab22ad7
+  - enabled: 1
+    path: Assets/Scenes/LVL_1.unity
+    guid: c16d5d3ebf9ae9b47abede41ae6a192f
+  - enabled: 1
     path: Assets/Scenes/Test.unity
     guid: 550ad81c37c4a334e87f3ceb5eb49c03
-  - enabled: 1
-    path: Assets/Scenes/TTT.unity
-    guid: 59c115345a900a240a128e1470ae34fc
   m_configObjects: {}

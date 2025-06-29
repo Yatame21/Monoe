@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - player
+  - Obstacle
+  - MusicSlider
+  - SFXSlider
   layers:
   - Default
   - TransparentFX

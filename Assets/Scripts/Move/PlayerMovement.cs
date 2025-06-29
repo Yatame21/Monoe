@@ -95,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
                 jumpsRemaining--;
                 animator.SetTrigger("jump");
                 JumpFx();
+                SoundEffectManager.Play("Jump");
             }
             else if (context.canceled)
             {
@@ -103,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
                 jumpsRemaining--;
                 animator.SetTrigger("jump");
                 JumpFx();
+                SoundEffectManager.Play("Jump");
             }
         }
         // wall jump
